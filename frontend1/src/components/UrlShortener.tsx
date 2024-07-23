@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
+
 const UrlShortener: React.FC = () => {
   const [originalUrl, setOriginalUrl] = useState("");
   const [shortUrl, setShortUrl] = useState("");
@@ -8,7 +9,7 @@ const UrlShortener: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:3000/short", { originalUrl });
+      const res = await axios.post(import.meta.env.VITE_BACKEND_URL, { originalUrl });
       setShortUrl(res.data.shortUrl);
     } catch (err) {
       console.error(err);
